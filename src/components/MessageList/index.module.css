@@ -1,0 +1,11 @@
+.item {
+  height: 40px;
+  border-bottom: 1px solid #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.item:last-child {
+  border-bottom: none;
+}

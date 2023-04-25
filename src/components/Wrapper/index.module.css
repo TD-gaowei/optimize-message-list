@@ -1,0 +1,7 @@
+.wrapper {
+  width: 600px;
+  height: 500px;
+  border: 1px solid #000;
+  overflow: auto;
+  scroll-behavior: smooth;
+}
