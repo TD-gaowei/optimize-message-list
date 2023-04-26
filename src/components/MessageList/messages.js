@@ -1,4 +1,4 @@
-function range(len) {
+export function range(len) {
   return new Array(len).fill(0);
 }
 

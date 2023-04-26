@@ -1,22 +1,37 @@
-import styles from "./index.module.css";
-import MessageList from "../MessageList/MessageList.jsx";
 import { useEffect, useRef, useState } from "react";
-import { messages as messagesMock } from "../MessageList/messages.js";
+import MessageList from "../MessageList/MessageList.jsx";
+import { messages as messagesMock, range } from "../MessageList/messages.js";
 
-// function insertMessages() {}
+import { nanoid } from "nanoid";
+
+import styles from "./index.module.css";
+
+function insertMessages() {
+  return range(10).map((_, idx) => ({
+    name: `message-${idx}-${nanoid()}`,
+  }));
+}
 
 const Wrapper = () => {
   const [messages, setMessages] = useState(messagesMock);
+  const [loading, setLoading] = useState(false);
 
   const wrapperRef = useRef(null);
   const messageListRef = useRef(null);
 
+  const onScrollChange = () => {
+    if (wrapperRef?.current.scrollTop <= 0) {
+      setLoading(true);
+      setTimeout(() => {
+        setMessages((messages) => [...insertMessages(), ...messages]);
+        wrapperRef.current?.scrollTo(0, 41);
+        setLoading(false);
+      }, 1500);
+    }
+  };
+
   useEffect(() => {
     wrapperRef.current?.addEventListener("scroll", onScrollChange);
-
-    function onScrollChange() {
-      // console.log(wrapperRef?.current.scrollTop);
-    }
 
     return () => {
       wrapperRef.current?.removeEventListener("scroll", onScrollChange);
@@ -33,6 +48,7 @@ const Wrapper = () => {
     <>
       <h2>消息长列表</h2>
       <div className={styles.wrapper} ref={wrapperRef}>
+        {loading ? <p>loading</p> : null}
         <MessageList ref={messageListRef} messages={messages} />
       </div>
     </>
