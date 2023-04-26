@@ -6,5 +6,5 @@ const isGitHub = process.env.TARGET === "github";
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: isGitHub ? "/TechNiHao/" : "/",
+  base: isGitHub ? "/optimize-message-list/" : "/",
 });
