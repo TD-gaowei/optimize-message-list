@@ -1,8 +1,8 @@
 import { Button, Input } from "antd";
 import { useState, memo } from "react";
+import PropTypes from "prop-types";
 
 import styles from "./index.module.css";
-import PropTypes from "prop-types";
 
 const MessageInput = (props) => {
   const { onSend } = props;
@@ -29,7 +29,9 @@ const MessageInput = (props) => {
 };
 
 MessageInput.displayName = "MessageInput";
-export default memo(MessageInput);
+
+const MessageInputMemo = memo(MessageInput);
+export default MessageInputMemo;
 
 MessageInput.propTypes = {
   onSend: PropTypes.func,

@@ -28,7 +28,7 @@ MessageList.propTypes = {
     PropTypes.shape({
       name: PropTypes.string,
       itemHeight: PropTypes.number,
-      bg: PropTypes.string,
+      bg: PropTypes.any,
     })
   ),
 };

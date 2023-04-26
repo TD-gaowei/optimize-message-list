@@ -18,6 +18,8 @@ import MessageInput from "../MessageInput/index.jsx";
 
 const THROTTLE_TIME = 400;
 
+const TRIGGER_DISTANCE = 30;
+
 const throttleOpts = {
   leading: false,
 };
@@ -36,7 +38,7 @@ const Wrapper = () => {
   }, []);
 
   const onScrollChange = useCallback(() => {
-    if (wrapperRef?.current.scrollTop <= 0) {
+    if (wrapperRef?.current.scrollTop <= TRIGGER_DISTANCE) {
       setLoading(true);
       setTimeout(() => {
         setMessages((messages) => [...insertMessages(), ...messages]);
