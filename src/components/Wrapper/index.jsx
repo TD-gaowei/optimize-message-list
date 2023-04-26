@@ -3,15 +3,6 @@ import MessageList from "../MessageList/MessageList.jsx";
 import { generateMessage, insertMessages, messages as messagesMock } from "../../mocks/messages.js";
 import throttle from "lodash.throttle";
 
-/**
- * 现在的难点是，消息的元素的高度不知道，如何计算高度？
- * 现在解决了固定高度的计算
- *
- * 用最新的总消息高度 - 上一次总消息的高度 - 消息容器高度 / 2
- *
- * 接下引入虚拟列表
- */
-
 import styles from "./index.module.css";
 import Loading from "../Loading/index.jsx";
 import MessageInput from "../MessageInput/index.jsx";

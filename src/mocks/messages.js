@@ -1,32 +1,30 @@
 import { nanoid } from "nanoid";
+import { colors, heights } from "../constants/index.js";
 
 export function range(len) {
   return new Array(len).fill(0);
 }
 
-const itemHeight = [40, 50, 60];
-const colors = ["yellowgreen", "grey", "orange", "yellow", "blue", "red"];
-
 export function generateMessage(message) {
   return {
     name: message,
-    itemHeight: itemHeight[Math.floor(Math.random() * 3)],
+    itemHeight: selectHeight(),
     bg: null,
   };
 }
 
 export const messages = range(20).map((_, idx) => ({
   name: `message${idx}`,
-  itemHeight: itemHeight[Math.floor(Math.random() * 3)],
+  itemHeight: selectHeight(),
   bg: null,
 }));
 
 export function insertMessages() {
-  const bg = selectColor();
+  const backgroundColor = selectColor();
   return range(20).map((_, idx) => ({
     name: `message-${idx}-${nanoid()}`,
-    itemHeight: itemHeight[Math.floor(Math.random() * 3)],
-    bg,
+    itemHeight: selectHeight(),
+    bg: backgroundColor,
   }));
 }
 
@@ -42,4 +40,8 @@ function selectColor() {
   colorIndex += 1;
 
   return selectedColor;
+}
+
+function selectHeight() {
+  return heights[Math.floor(Math.random() * 3)];
 }
