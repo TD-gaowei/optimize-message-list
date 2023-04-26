@@ -70,7 +70,7 @@ const Wrapper = () => {
 
   return (
     <>
-      <h2>消息长列表</h2>
+      <h2>消息长列表优化</h2>
       <div className={styles.wrapper} ref={wrapperRef}>
         {loading ? <Loading tip="加载消息中" /> : null}
         <MessageList ref={messageListRef} messages={messages} />
