@@ -10,21 +10,24 @@ export function generateMessage(message) {
     name: message,
     itemHeight: selectHeight(),
     bg: null,
+    isAgent: true,
   };
 }
 
-export const messages = range(20).map((_, idx) => ({
-  name: `message${idx}`,
+export const messages = range(20).map(() => ({
+  name: `message-${nanoid()}`,
   itemHeight: selectHeight(),
   bg: null,
+  isAgent: isAgent(),
 }));
 
 export function insertMessages() {
   const backgroundColor = selectColor();
-  return range(20).map((_, idx) => ({
-    name: `message-${idx}-${nanoid()}`,
+  return range(20).map(() => ({
+    name: `message-${nanoid()}`,
     itemHeight: selectHeight(),
     bg: backgroundColor,
+    isAgent: isAgent(),
   }));
 }
 
@@ -44,4 +47,8 @@ function selectColor() {
 
 function selectHeight() {
   return heights[Math.floor(Math.random() * 3)];
+}
+
+function isAgent() {
+  return [true, false][Math.floor(Math.random() * 2)];
 }
