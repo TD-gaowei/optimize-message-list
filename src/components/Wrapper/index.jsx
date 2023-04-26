@@ -35,7 +35,7 @@ const Wrapper = () => {
 
   useEffect(() => {
     messageListHeight.current = messageListRef.current?.clientHeight;
-  }, []);
+  }, [messageListRef.current?.clientHeight]);
 
   const onScrollChange = useCallback(() => {
     if (wrapperRef?.current.scrollTop <= TRIGGER_DISTANCE) {
